@@ -14,8 +14,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/createUser")
-    public String saveUser(){
-      //  userService.saveUser(saveUserRequest);
+    public String saveUser(@RequestBody SaveUserRequest saveUserRequest){
+        userService.saveUser(saveUserRequest);
         return "User saved succesffully";
     }
 
