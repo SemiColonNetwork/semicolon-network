@@ -1,4 +1,4 @@
-FROM openjdk-17 AS build
+FROM openjdk:11-jre-slim AS build
 RUN apt-get update && apt-get install -y maven
 COPY  src .
 RUN mvn clean package -DskipTests
