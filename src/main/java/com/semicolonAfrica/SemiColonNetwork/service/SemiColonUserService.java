@@ -15,9 +15,12 @@ public class SemiColonUserService implements UserService{
 
     private final ModelMapper modelMapper;
 
+    private final static String response = "Thank you, we will get back to you shortly!";
+
     @Override
-    public User saveUser(SaveUserRequest saveUserRequest) {
+    public String saveUser(SaveUserRequest saveUserRequest) {
         User user = modelMapper.map(saveUserRequest, User.class);
-        return userRepository.save(user);
+        userRepository.save(user);
+        return response;
     }
 }
