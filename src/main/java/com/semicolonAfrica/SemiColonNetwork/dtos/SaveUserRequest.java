@@ -10,8 +10,7 @@ public class SaveUserRequest {
     private String emailAddress;
     private String phoneNumber;
     private String cohort;
-    private boolean isAncestor;
-    private boolean isNative;
+    private boolean isAncestorOrNative;
     private boolean isEmployed;
     private String techStack;
     private String language;
