@@ -17,9 +17,9 @@ public class User {
     private String fullName;
     private String emailAddress;
     private String phoneNumber;
+    private String stack;
     private String cohort;
-    private boolean isAncestorOrNative;
-    private boolean isEmployed;
-    private String techStack;
-    private String language;
+    private String proficientLanguage;
+    private String ancestorOrNative;
+    private String employmentStatus;
 }
