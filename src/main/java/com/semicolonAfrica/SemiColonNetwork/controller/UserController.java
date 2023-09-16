@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin("/**")
+@CrossOrigin(origins = "/**")
 public class UserController {
 
     private UserService userService;
