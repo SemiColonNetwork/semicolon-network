@@ -1,5 +1,6 @@
 package com.semicolonAfrica.SemiColonNetwork.models;
 
+import com.mongodb.annotations.ThreadSafe;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
