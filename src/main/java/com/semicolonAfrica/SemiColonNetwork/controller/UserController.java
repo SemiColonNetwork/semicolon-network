@@ -20,17 +20,9 @@ public class UserController {
 
     private UserService userService;
 
-    private final EmailService emailService;
     @PostMapping("/join")
     public ResponseEntity<?> saveUser(@RequestBody SaveUserRequest saveUserRequest){
        var response =  userService.saveUser(saveUserRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
-
-    @PostMapping("/mail")
-    public ResponseEntity<?> mailuser(@RequestBody EmailDetails emailDetails){
-        var response = emailService.sendEmail(emailDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
