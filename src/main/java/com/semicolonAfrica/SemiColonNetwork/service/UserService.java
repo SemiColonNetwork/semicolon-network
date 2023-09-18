@@ -5,5 +5,5 @@ import com.semicolonAfrica.SemiColonNetwork.models.User;
 
 public interface UserService {
 
-    String saveUser (SaveUserRequest saveUserRequest);
+    String saveUser (SaveUserRequest saveUserRequest) throws Exception;
 }

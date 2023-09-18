@@ -23,11 +23,11 @@ public class SemiColonUserService implements UserService{
     private final static String response = "Thank you, we will get back to you shortly!";
 
     @Override
-    public String saveUser(SaveUserRequest saveUserRequest) {
+    public String saveUser(SaveUserRequest saveUserRequest) throws Exception {
         List<User> users = new ArrayList<>(userRepository.findAll());
+        boolean bool = false;
         for (User user : users) {
-            if (user.getEmailAddress().equals(saveUserRequest.getEmailAddress()))
-                throw new RuntimeException("Sorry, you cannot register twice");
+            if (user.getEmailAddress().equals(saveUserRequest.getEmailAddress())) throw new Exception("Sorry, you cannot register twice");
         }
         User user = modelMapper.map(saveUserRequest, User.class);
         userRepository.save(user);

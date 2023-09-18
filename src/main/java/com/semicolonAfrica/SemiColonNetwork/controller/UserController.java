@@ -22,8 +22,14 @@ public class UserController {
 
     @PostMapping("/join")
     public ResponseEntity<?> saveUser(@RequestBody SaveUserRequest saveUserRequest){
-       var response =  userService.saveUser(saveUserRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        String response = null;
+        try {
+            response = userService.saveUser(saveUserRequest);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
     }
 
 }
