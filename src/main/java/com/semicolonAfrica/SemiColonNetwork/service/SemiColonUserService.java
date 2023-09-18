@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class SemiColonUserService implements UserService{
@@ -15,12 +18,17 @@ public class SemiColonUserService implements UserService{
 
     private final ModelMapper modelMapper;
 
+    private EmailService emailService;
+
     private final static String response = "Thank you, we will get back to you shortly!";
 
     @Override
     public String saveUser(SaveUserRequest saveUserRequest) {
         User user = modelMapper.map(saveUserRequest, User.class);
         userRepository.save(user);
+        List<User> users = new ArrayList<>(userRepository.findAll());
+        if(users.size()%10 == 0)emailService.sendEmail(EmailDetails.builder().recipient("semicolonnetwork1@gmail.com").msgBody("You have 10 New Records and a total of " + users.size() + " records").subject("New records").build());
+
         return response;
     }
 }
