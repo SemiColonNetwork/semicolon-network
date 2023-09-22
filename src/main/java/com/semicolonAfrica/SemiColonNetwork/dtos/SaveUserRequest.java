@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class SaveUserRequest {
    private String id;
     private String fullName;
-   @Indexed(unique = true)
    private String emailAddress;
     private String phoneNumber;
     private String stack;

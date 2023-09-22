@@ -1,11 +1,14 @@
 package com.semicolonAfrica.SemiColonNetwork.service;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 
@@ -33,6 +36,22 @@ public class SemiColonNetworkEmailService implements EmailService{
         catch (Exception e) {
             System.out.println(e.getMessage());
             return "Error while Sending Mail";
+        }
+    }
+
+    @Override
+    public String mimeMessage(EmailDetails emailDetails) {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+            helper.setFrom(sender);
+        helper.setTo(emailDetails.getRecipient());
+        helper.setSubject(emailDetails.getSubject());
+        helper.setText(emailDetails.getMsgBody(), true);
+        javaMailSender.send(mimeMessage);
+        return "Sent";
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 }
