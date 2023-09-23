@@ -31,8 +31,7 @@ public class SemiColonUserService implements UserService{
             if (user.getEmailAddress().equals(saveUserRequest.getEmailAddress()) || user.getPhoneNumber().equals(saveUserRequest.getPhoneNumber())) throw new Exception("Sorry, you cannot register with the same Email or Phone Number");
         }
         User user = modelMapper.map(saveUserRequest, User.class);
-        LocalDateTime localDateTime = LocalDateTime.now();
-        user.setTimeRegistered(timeRegistered(localDateTime));
+        user.setTimeRegistered(LocalDateTime.now());
         userRepository.save(user);
         String message = Template.mailTemplate(saveUserRequest.getFullName());
         emailService.mimeMessage(EmailDetails.builder().recipient(saveUserRequest.getEmailAddress()).msgBody(message).subject("Welcome").build());
@@ -40,12 +39,4 @@ public class SemiColonUserService implements UserService{
 
         return response;
     }
-
-    public String timeRegistered(LocalDateTime localDateTime){
-        Duration duration = Duration.between(localDateTime, LocalDateTime.now());
-        long hours = duration.toHours();
-        if (hours < 24) return String.format("Registered %s hours ago",hours);
-        else return String.format("Registered %s days ago", duration.toDays());
-    };
-
 }

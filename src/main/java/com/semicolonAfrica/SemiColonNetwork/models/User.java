@@ -9,6 +9,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
@@ -26,5 +28,5 @@ public class User {
     private String proficientLanguage;
     private String ancestorOrNative;
     private String employmentStatus;
-    private String timeRegistered;
+    private LocalDateTime timeRegistered;
 }
