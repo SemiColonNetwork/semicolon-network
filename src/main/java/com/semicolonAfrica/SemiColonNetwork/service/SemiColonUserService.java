@@ -44,7 +44,7 @@ public class SemiColonUserService implements UserService{
     public String timeRegistered(LocalDateTime localDateTime){
         Duration duration = Duration.between(localDateTime, LocalDateTime.now());
         long hours = duration.toHours();
-        if (hours > 24) return String.format("Registered %s hours ago",hours);
+        if (hours < 24) return String.format("Registered %s hours ago",hours);
         else return String.format("Registered %s days ago", duration.toDays());
     };
 
