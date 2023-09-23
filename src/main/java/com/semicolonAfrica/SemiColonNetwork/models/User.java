@@ -26,4 +26,5 @@ public class User {
     private String proficientLanguage;
     private String ancestorOrNative;
     private String employmentStatus;
+    private String timeRegistered;
 }

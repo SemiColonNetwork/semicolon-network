@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.index.Indexed;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 public class SaveUserRequest {
@@ -16,4 +18,5 @@ public class SaveUserRequest {
     private String proficientLanguage;
     private String ancestorOrNative;
     private String employmentStatus;
+
 }
