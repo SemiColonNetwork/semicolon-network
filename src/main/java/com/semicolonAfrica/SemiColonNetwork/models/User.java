@@ -20,7 +20,7 @@ public class User {
     private String id;
     private String fullName;
     @Indexed(unique = true)
-    private String emailAddress;
+    private String email;
     @Indexed(unique = true)
     private String phoneNumber;
     private String stack;
