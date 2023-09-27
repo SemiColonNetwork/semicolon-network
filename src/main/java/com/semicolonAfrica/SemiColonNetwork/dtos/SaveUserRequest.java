@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class SaveUserRequest {
    private String id;
     private String fullName;
-   private String emailAddress;
+   private String email;
     private String phoneNumber;
     private String stack;
     private String cohort;

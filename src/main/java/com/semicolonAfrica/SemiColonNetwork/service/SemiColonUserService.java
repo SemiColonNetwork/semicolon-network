@@ -28,13 +28,13 @@ public class SemiColonUserService implements UserService{
     public String saveUser(SaveUserRequest saveUserRequest) throws Exception {
         List<User> users = new ArrayList<>(userRepository.findAll());
         for (User user : users) {
-            if (user.getEmailAddress().equals(saveUserRequest.getEmailAddress()) || user.getPhoneNumber().equals(saveUserRequest.getPhoneNumber())) throw new Exception("Sorry, you cannot register with the same Email or Phone Number");
+            if (user.getEmail().equals(saveUserRequest.getEmail()) || user.getPhoneNumber().equals(saveUserRequest.getPhoneNumber())) throw new Exception("Sorry, you cannot register with the same Email or Phone Number");
         }
         User user = modelMapper.map(saveUserRequest, User.class);
         user.setTimeRegistered(LocalDateTime.now());
         userRepository.save(user);
         String message = Template.mailTemplate(saveUserRequest.getFullName());
-        emailService.mimeMessage(EmailDetails.builder().recipient(saveUserRequest.getEmailAddress()).msgBody(message).subject("Welcome").build());
+        emailService.mimeMessage(EmailDetails.builder().recipient(saveUserRequest.getEmail()).msgBody(message).subject("Welcome").build());
         if(users.size()%10 == 0)emailService.sendEmail(EmailDetails.builder().recipient("semicolonnetwork1@gmail.com").msgBody("You have 10 New Records and a total of " + users.size() + " records").subject("New records").build());
 
         return response;
