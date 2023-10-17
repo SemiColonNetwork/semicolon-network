@@ -18,7 +18,7 @@ public class Template {
                 "  <table role=\"presentation\" border=\"0\" width=\"100%\" cellspacing=\"0\">\n" +
                 "     <tr>\n" +
                 "       <td style=\"padding: 30px 30px 30px 60px;\">\n" +
-                "        <h2 style=\"font-size: 20px; margin:0 0 20px 0; font-family:Arial;\">Hi " + name + "</h2>\n" +
+                "        <h2 style=\"font-size: 20px; margin:0 0 20px 0; font-family:Arial;\">Hi " + firstName + "</h2>\n" +
                 "\n" +
                 "Welcome Onboard!<br>\n" + // Line break after the sentence
                 "Thank you for choosing to join us on this project we would get back to you with more details later.<br>\n" + 
